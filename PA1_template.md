@@ -85,7 +85,7 @@ max(byint$meanstep)
 ```
 ## [1] 206.1698
 ```
-were taken. 
+steps were taken. 
 
 ## Imputing missing values
 
@@ -143,7 +143,7 @@ median(byday$totstep)
 ## [1] 10766.19
 ```
 
-The histogram differs in the first bin, because days with all NA values were counted as zero steps, while they were replaced with the average number of steps. Therefore, the mean and median are also larger, and the mean and median are now eequal, indicating a symmetric distribution.  
+The histogram differs especially in the first bin, because days with all NA values were counted as zero steps in the first histogram, while here they counted as the average number of steps. Therefore, the mean and median are also larger, and the mean and median are now eequal, indicating a symmetric distribution.  
 
 ## Are there differences in activity patterns between weekdays and weekends?
 

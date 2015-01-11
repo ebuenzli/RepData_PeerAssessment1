@@ -272,7 +272,7 @@ plot(byint$interval,byint$meanstep,type=&quot;l&quot;,xlab=&quot;Time Interval&q
 <pre><code>## [1] 206.1698
 </code></pre>
 
-<p>were taken. </p>
+<p>steps were taken. </p>
 
 <h2>Imputing missing values</h2>
 
@@ -320,7 +320,7 @@ hist(byday$totstep,xlab=&quot;Total steps per day&quot;,main=&quot;Histogram of 
 <pre><code>## [1] 10766.19
 </code></pre>
 
-<p>The histogram differs in the first bin, because days with all NA values were counted as zero steps, while they were replaced with the average number of steps. Therefore, the mean and median are also larger, and the mean and median are now eequal, indicating a symmetric distribution.  </p>
+<p>The histogram differs especially in the first bin, because days with all NA values were counted as zero steps in the first histogram, while here they counted as the average number of steps. Therefore, the mean and median are also larger, and the mean and median are now eequal, indicating a symmetric distribution.  </p>
 
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
 
