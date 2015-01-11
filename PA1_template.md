@@ -21,7 +21,7 @@ df$date <- as.Date(df$date)
 tdf <- tbl_df(df)
 ```
 
-## What is mean total number of steps taken per day?
+## What is the mean total number of steps taken per day?
 
 Histogram of total steps taken by day:
 
@@ -57,7 +57,7 @@ median(byday$totstep,na.rm=TRUE)
 
 ## What is the average daily activity pattern?
 
-Plot of the daily activity pattern:
+Calculation and plot of the daily activity pattern:
 
 ```r
 byint <- group_by(tdf, interval)
@@ -87,7 +87,7 @@ max(byint$meanstep)
 ```
 steps were taken. 
 
-## Imputing missing values
+## Inputing missing values
 
 Number of missing values in the dataset:
 
@@ -99,7 +99,7 @@ sum(is.na(tdf$steps))
 ## [1] 2304
 ```
 
-Because often full days are missing, the missing values are filled with the mean steps in the 5 minute interval over all days.
+Because often full days are missing, the missing values are filled with the mean steps in the corresponding 5 minute interval over all days.
 
 
 ```r
@@ -143,17 +143,18 @@ median(byday$totstep)
 ## [1] 10766.19
 ```
 
-The histogram differs especially in the first bin, because days with all NA values were counted as zero steps in the first histogram, while here they counted as the average number of steps. Therefore, the mean and median are also larger, and the mean and median are now eequal, indicating a symmetric distribution.  
+The histogram differs especially in the first bin, because days with all NA values were counted as zero steps in the first histogram, while here they count as the average number of steps. Therefore, the mean and median are also larger, and the mean and median are now equal, indicating a symmetric distribution.  
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
+Calculation and plot of daily activity averaged over weekends and weekdays:
 
 ```r
 tdf_nona <- mutate(tdf_nona,weekday=ifelse(weekdays(date) %in% c("Monday","Tuesday","Wednesday","Thursday","Friday"),"Weekday","Weekend"))
 tdf_nona$weekday <-as.factor(tdf_nona$weekday)
 tdf_nona_byweekday <- group_by(tdf_nona,weekday,interval)
 tdf_nona_byweekday <- summarize(tdf_nona_byweekday,meanstep=mean(steps))
-
+tdf_nona_byweekday$interval <- as.numeric(as.character(tdf_nona_byweekday$interval))
 xyplot(meanstep ~ interval|weekday, tdf_nona_byweekday,ylab="Mean number of steps",type="l")
 ```
 
